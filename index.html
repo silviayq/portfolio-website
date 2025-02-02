@@ -74,8 +74,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            font-weight: bold;
         }
 
         .cloud-icon:before {
@@ -100,6 +98,13 @@
             right: -30px;
         }
 
+        .cloud-label {
+            font-size: 1.1rem;
+            color: #4682B4;
+            font-weight: bold;
+            text-align: center;
+        }
+
         footer {
             padding: 10px;
             background: transparent;
@@ -120,8 +125,8 @@
         <section>
             <h2>Projects</h2>
             <div class="cloud-container">
-                <div class="cloud-icon" onclick="window.location.href='fa24.html'">FA 24</div>
-                <div class="cloud-icon" onclick="window.location.href='sp25.html'">SP 25</div>
+                <div class="cloud-icon" onclick="window.location.href='fa24.html'"><span class="cloud-label">FA 24</span></div>
+                <div class="cloud-icon" onclick="window.location.href='sp25.html'"><span class="cloud-label">SP 25</span></div>
             </div>
         </section>
     </main>
