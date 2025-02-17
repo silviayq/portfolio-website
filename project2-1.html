@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project #2 - Part 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="p5-1.js"></script>
+    <script src="p5-1.sound.min.js"></script>
+    <script src="sketch-1.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #b3e5fc, #a5d6a7);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        nav {
+            margin: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #p5-canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 700px;
+            height: 400px;
+            background-color: black;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project #2 - Part 1</h1>
+    </header>
+
+    <nav>
+        <a href="sp25.html">Back to SP 25 Projects</a>
+    </nav>
+
+    
+    ♡＞₃＜♡
+
+    <p>Try to click "1", "2", "3"</p>
+
+    <main>
+        <div id="p5-canvas-container"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silvia's Portfolio</p>
+    </footer>
+
+    <script>
+        function setup() {
+            let canvas = createCanvas(700, 400);
+            canvas.parent('p5-canvas-container');
+        }
+    </script>
+</body>
+</html>

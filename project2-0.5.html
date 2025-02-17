@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project #2 - Part 0.5</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="p5-0.5.js"></script>
+    <script src="p5-0.5.sound.min.js"></script>
+    <script src="sketch-0.5.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #b3e5fc, #a5d6a7);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        nav {
+            margin: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #p5-canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            max-width: 700px;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project #2 - Part 0.5</h1>
+    </header>
+
+    <nav>
+        <a href="sp25.html">Back to SP 25 Projects</a>
+    </nav>
+
+    <main>
+        <div id="p5-canvas-container"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Silvia's Portfolio</p>
+    </footer>
+
+    <script>
+        function draw() {
+    background(0);
+
+    for (let item of points) {
+        if (item.effect === 'float') {
+            fill(255, 0, 0);
+            for (let p of item.data) {
+                let offsetX = sin(p.y * 0.05 + millis() * 0.002) * 5;
+                ellipse(p.x + offsetX, p.y, 5, 5);
+            }
+        } else if (item.effect === 'mask') {
+            fill(255, 0, 0);
+            for (let p of item.data) {
+                let d = dist(mouseX, mouseY, p.x, p.y);
+                if (d > 30) ellipse(p.x, p.y, 5, 5);
+            }
+        } else if (item.effect === 'split') {
+            for (let p of item.data) {
+                let c = p.x < width / 2 ? color(255, 0, 0) : color(0, 255, 0);
+                fill(c);
+                ellipse(p.x, p.y, 5, 5);
+            }
+        } else if (item.effect === 'gradient') {
+            for (let j = 0; j < item.data.length; j++) {
+                let lerpedColor = lerpColor(color(255, 0, 0), color(0, 255, 0), j / item.data.length);
+                fill(lerpedColor);
+                ellipse(item.data[j].x, item.data[j].y, 5, 5);
+            }
+        } else if (item.effect === 'pattern') {
+            for (let j = 0; j < item.data.length; j++) {
+                if (j % 2 === 0) {
+                    fill(255, 0, 0);
+                    ellipse(item.data[j].x, item.data[j].y, 5, 5);
+                } else {
+                    fill(255);
+                    rect(item.data[j].x - 2.5, item.data[j].y - 2.5, 5, 5);
+                }
+            }
+        } else if (item.effect === 'wave') {
+            fill(255, 0, 0);
+            for (let p of item.data) {
+                let offsetY = sin(p.x * 0.05 + millis() * 0.002) * 5;
+                ellipse(p.x, p.y + offsetY, 5, 5);
+            }
+        } else if (item.effect === 'scatter') {
+            fill(255, 0, 0);
+            for (let p of item.data) {
+                let offsetX = random(-2, 2);
+                let offsetY = random(-2, 2);
+                ellipse(p.x + offsetX, p.y + offsetY, 5, 5);
+            }
+        }
+    }
+}
+
+        
+    </script>
+</body>
+</html>
